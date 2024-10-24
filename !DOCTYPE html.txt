@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج الاتصال عبر واتساب</title>
+    <style>
+        body {
+            direction: rtl; /* الكتابة من اليمين إلى اليسار */
+            font-family: Arial, sans-serif;
+        }
+        .contact-form {
+            max-width: 450px; /* زيادة عرض النموذج */
+            margin: auto;
+            padding: 20px; /* زيادة الحواف الداخلية */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .contact-form h2 {
+            text-align: center; /* تنسيق العنوان في الوسط */
+            text-transform: uppercase; /* جعل الحروف كبيرة */
+            font-size: 28px; /* تكبير حجم الخط */
+        }
+        .contact-form input {
+            width: calc(50% - 10px); /* 50% مع هامش أصغر */
+            padding: 15px; /* زيادة حجم الحقل */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: right; /* محاذاة النص لليمين */
+            font-size: 20px; /* زيادة حجم النص داخل الحقول */
+        }
+        .input-container {
+            display: flex; /* عرض الحقول في صف واحد */
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .input-container input {
+            margin-right: 10px; /* إضافة مسافة بين حقول الاسم ورقم الهاتف */
+        }
+        .contact-form select {
+            width: 100%;
+            padding: 15px; /* زيادة حجم حقل الاختيار */
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: right;
+            font-size: 20px; /* تكبير النص داخل الخيارات */
+        }
+        .contact-form button {
+            width: 100%;
+            padding: 15px; /* تكبير حجم الزر */
+            background-color: #25D366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px; /* تكبير حجم الخط في الزر */
+        }
+        .contact-form button:hover {
+            background-color: #128C7E;
+        }
+        .whatsapp-text {
+            text-align: center;
+            text-transform: uppercase;
+            margin: 15px 0;
+            font-size: 26px; /* تكبير النص */
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="contact-form">
+    <h2 class="whatsapp-text">تواصل معنا عبر الوتساب</h2>
+    
+    <div class="input-container">
+        <input type="text" id="fullName" placeholder="الاسم الكامل" required>
+        <input type="tel" id="phoneNumber" placeholder="رقم الهاتف" required>
+    </div>
+    
+    <select id="serviceType" required>
+        <option value="" disabled selected>اختر نوع الخدمة</option>
+        <option value="Landing Page">صفحة هبوط</option>
+        <option value="Ad Video">فيديو إعلاني</option>
+    </select>
+
+    <select id="marketType" required>
+        <option value="" disabled selected>في أي سوق تعمل؟</option>
+        <option value="Morocco">المغرب</option>
+        <option value="European Market">السوق الأوروبي</option>
+        <option value="Gulf Market">السوق الخليجي</option>
+        <option value="African Market">السوق الأفريقي</option>
+    </select>
+    
+    <button onclick="sendMessage()">إرسال عبر الوتساب</button>
+</div>
+
+<script>
+    function sendMessage() {
+        var fullName = document.getElementById('fullName').value;
+        var phoneNumber = document.getElementById('phoneNumber').value;
+        var serviceType = document.getElementById('serviceType').value;
+        var marketType = document.getElementById('marketType').value;
+
+        if (fullName && phoneNumber && serviceType && marketType) {
+            var whatsappNumber = '212691804398'; // رقم واتساب الخاص بك
+            
+            var message = "الاسم: " + fullName + "%0A" +
+                          "رقم الهاتف: " + phoneNumber + "%0A" +
+                          "نوع الخدمة: " + serviceType + "%0A" +
+                          "السوق: " + marketType;
+                          
+            var whatsappLink = "https://wa.me/" + whatsappNumber + "?text=" + message;
+            
+            // فتح رابط واتساب
+            window.open(whatsappLink, '_blank');
+        } else {
+            alert('يرجى ملء جميع الحقول واختيار الخدمة والسوق.');
+        }
+    }
+</script>
+
+</body>
+</html>
